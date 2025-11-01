@@ -19,7 +19,7 @@ int main() {
         cout << pair.first << "[ ";
         cout << get<0>(pair.second) << " "
              << get<1>(pair.second) << " "
-             << get<2>(pair.second) << " ]" << endl;  
+             << get<2>(pair.second) << " ]";  
         cout << endl;
     }
 
@@ -30,7 +30,7 @@ int main() {
         cout << it->first << "[ ";
         cout << get<0>(it->second) << " "
              << get<1>(it->second) << " "
-             << get<2>(it->second) << " ]" << endl;  
+             << get<2>(it->second) << " ]";
         cout << endl;
     }
 
@@ -42,9 +42,11 @@ int main() {
     auto it = villagerInfo.find(searchKey);
     if (it != villagerInfo.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
+        cout << "\nFound " << searchKey << ": ";
+        cout << it->first << "[ ";
+        cout << get<0>(it->second) << " "
+             << get<1>(it->second) << " "
+             << get<2>(it->second) << " ]";
         cout << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
