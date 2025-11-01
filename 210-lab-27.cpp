@@ -102,7 +102,7 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& villagerInfo) {
         } 
     }
 }
-
+   
 void searchFriendship(map<string, tuple<int, string, string>>& villagerInfo) { 
 
 }
