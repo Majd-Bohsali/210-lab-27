@@ -3,6 +3,12 @@
 #include <vector>
 using namespace std;
 
+
+int printMenu(); 
+void increaseFriendship(map<string, tuple<int, string, string>>&);
+void decreaseFriendship(map<string, tuple<int, string, string>>&);
+void searchFriendship(map<string, tuple<int, string, string>>&);
+
 int main() {
     // declarations
     map<string, tuple<int, string, string>> villagerInfo;
@@ -57,4 +63,33 @@ int main() {
     cout << "Size after clear: " << villagerInfo.size() << endl;
 
     return 0;
+}
+
+int printMenu() {
+    int decision; 
+    cout << "1. Increase Friendship" << endl
+         << "2. Decrease Friendship" << endl
+         << "3. Search for Villager" << endl  
+         << "4. Exit" << endl; 
+    cout << "Choice -> ";
+    cin >> decision; 
+    return decision; 
+}
+
+void increaseFriendship(map<string, tuple<int, string, string>>& villagerInfo) { 
+    for (auto pair : villagerInfo) {
+        get<0>(pair.second) += 1;
+    }
+}
+
+void decreaseFriendship(map<string, tuple<int, string, string>>& villagerInfo) { 
+    for (auto pair : villagerInfo) {
+        if(get<0>(pair.second) >= 1) { 
+            get<0>(pair.second) -= 1; 
+        } 
+    }
+}
+
+void searchFriendship(map<string, tuple<int, string, string>>& villagerInfo) { 
+
 }
