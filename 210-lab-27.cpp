@@ -36,7 +36,6 @@ int main() {
             searchFriendship(villagerInfo);
         }
 
-
         // access the map using a range-based for loop
         cout << endl << "Villagers details: " << endl;
         for (auto pair : villagerInfo) {
@@ -64,7 +63,7 @@ int menu_select() {
     cout << "Choice -> ";
     cin >> decision; 
     return decision; 
-}
+}  
 
 void increaseFriendship(map<string, tuple<int, string, string>>& villagerInfo) { 
     for (auto& pair : villagerInfo) {
