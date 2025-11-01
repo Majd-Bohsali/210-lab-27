@@ -8,7 +8,8 @@ int menu_select();
 void increaseFriendship(map<string, tuple<int, string, string>>&);
 void decreaseFriendship(map<string, tuple<int, string, string>>&);
 void searchFriendship(map<string, tuple<int, string, string>>&);
-
+void addVillager(map<string, tuple<int, string, string>>&);
+void removeVillager(map<string, tuple<int, string, string>>&);
 int main() {
     // declarations
     map<string, tuple<int, string, string>> villagerInfo;
@@ -18,7 +19,7 @@ int main() {
     villagerInfo["Audie"] = {4, "Alligator", "Snap to It!"};
     villagerInfo["Raymond"] = {10, "Wolf", "Hubba hubba!"};
     villagerInfo.insert({"Marshal", {8, "Cat", "Nice fit"}});
-
+    cout << endl;
     int menuChoice = menu_select(); 
     while (menuChoice != 4) { 
         if(menuChoice == 1) { 
@@ -31,15 +32,18 @@ int main() {
 
 
         // access the map using a range-based for loop
-        cout << endl << "Villagers and their favorite colors (range-based for loop):" << endl;
+        cout << endl << "Villagers and info" << endl;
         for (auto pair : villagerInfo) {
-            cout << pair.first << "[ ";
+            cout << pair.first << " [";
             cout << get<0>(pair.second) << " "
                 << get<1>(pair.second) << " "
-                << get<2>(pair.second) << " ]";  
+                << get<2>(pair.second) << "]";  
             cout << endl;
         }
+
+        cout << endl;
         menuChoice = menu_select(); 
+         
         /*
         // access the map using iterators
         cout << "\nVillagers and their favorite colors (iterators):" << endl;
@@ -104,5 +108,18 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& villagerInfo) {
 }
    
 void searchFriendship(map<string, tuple<int, string, string>>& villagerInfo) { 
-
+    string searchKey;
+    cout << "Who do you want to search for: ";
+    cin >> searchKey; 
+    auto it = villagerInfo.find(searchKey);
+    if (it != villagerInfo.end()) {  // the iterator points to beyond the end of the map
+                                    // if searchKey is not found
+        cout << "\nFound " << searchKey << ": ";
+        cout << it->first << "[ ";
+        cout << get<0>(it->second) << " "
+            << get<1>(it->second) << " "
+            << get<2>(it->second) << " ]";
+        cout << endl;
+    } else
+        cout << endl << searchKey << " not found." << endl;
 }
