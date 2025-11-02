@@ -4,8 +4,8 @@
 #include <map>
 #include <vector>
 #include <string> 
+#include <tuple>
 using namespace std;
-
 
 int menu_select(); 
 void increaseFriendship(map<string, tuple<int, string, string>>&);
@@ -90,8 +90,8 @@ void searchFriendship(map<string, tuple<int, string, string>>& villagerInfo) {
                                     // if searchKey is not found
         cout << "\nFound " << searchKey << ": ";
         cout << it->first << "[ ";
-        cout << get<0>(it->second) << " "
-            << get<1>(it->second) << " "
+        cout << get<0>(it->second) << ", "
+            << get<1>(it->second) << ", "
             << get<2>(it->second) << " ]";
         cout << endl;
     } else
